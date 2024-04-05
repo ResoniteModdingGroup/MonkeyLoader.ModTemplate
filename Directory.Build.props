@@ -1,0 +1,16 @@
+<Project>
+    <PropertyGroup>
+        <OutputType>Library</OutputType>
+        <TargetFramework>net462</TargetFramework>
+        <LangVersion>11.0</LangVersion>
+        <Nullable>enable</Nullable>
+        <Deterministic>true</Deterministic>
+        <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+        <DebugType>portable</DebugType>
+        <GenerateDocumentationFile>True</GenerateDocumentationFile>
+        
+        <RestoreAdditionalProjectSources>
+            https://pkg.munally.com/MonkeyModdingTroop/index.json
+        </RestoreAdditionalProjectSources>
+    </PropertyGroup>
+</Project>
