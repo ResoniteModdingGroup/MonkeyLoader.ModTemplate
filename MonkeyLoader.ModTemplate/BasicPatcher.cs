@@ -1,5 +1,8 @@
-﻿using HarmonyLib;
+﻿using FrooxEngine.ProtoFlux;
+using HarmonyLib;
 using MonkeyLoader.Patching;
+using MonkeyLoader.Resonite;
+using MonkeyLoader.Resonite.Features.FrooxEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,16 +11,19 @@ using System.Threading.Tasks;
 
 namespace MonkeyLoader.ModTemplate
 {
-    [HarmonyPatch("SomeType", "SomeMethod")]
     [HarmonyPatchCategory(nameof(BasicPatcher))]
-    internal sealed class BasicPatcher : Monkey<BasicPatcher>
+    [HarmonyPatch(typeof(ProtoFluxTool), nameof(ProtoFluxTool.OnAttach))]
+    internal class BasicPatcher : ResoniteMonkey<BasicPatcher>
     {
         // The options for these should be provided by your game's game pack.
-        protected override IEnumerable<IFeaturePatch> GetFeaturePatches() => Enumerable.Empty<IFeaturePatch>();
+        protected override IEnumerable<IFeaturePatch> GetFeaturePatches()
+        {
+            yield return new FeaturePatch<ProtofluxTool>(PatchCompatibility.HookOnly);
+        }
 
         private static void Postfix()
         {
-            Logger.Info(() => "Postfix for SomeType.SomeMethod()!");
+            Logger.Info(() => "Postfix for ProtoFluxTool.OnAttach()!");
         }
     }
 }
