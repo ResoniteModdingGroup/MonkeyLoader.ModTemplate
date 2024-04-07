@@ -1,4 +1,5 @@
 ﻿using MonkeyLoader.Patching;
+using MonkeyLoader.Resonite.Features.FrooxEngine;
 using Mono.Cecil.Cil;
 using Mono.Cecil.Rocks;
 using MonoMod.Utils;
@@ -16,11 +17,14 @@ namespace MonkeyLoader.ModTemplate
             => Logger.Info(() => $"Hello {ConfigSection.TargetName} from pre-patched-in SomeNameSpace.SomeType static constructor!");
 
         // The options for these should be provided by your game's game pack.
-        protected override IEnumerable<IFeaturePatch> GetFeaturePatches() => Enumerable.Empty<IFeaturePatch>();
+        protected override IEnumerable<IFeaturePatch> GetFeaturePatches()
+        {
+            yield return new FeaturePatch<FrooxEngine>(PatchCompatibility.HookOnly);
+        }
 
         protected override IEnumerable<PrePatchTarget> GetPrePatchTargets()
         {
-            yield return new PrePatchTarget(new AssemblyName("Assembly-CSharp"), "SomeNameSpace.SomeType");
+            yield return new PrePatchTarget(Feature<FrooxEngine>.Assembly, "FrooxEngine.Engine");
         }
 
         protected override bool Patch(PatchJob patchJob)
