@@ -7,13 +7,18 @@
   <PropertyGroup>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>MonkeyLoader.ModTemplate</PackageId>
-    <Title>MonkeyLoader Mod Template</Title>
+    <Title>MonkeyLoader Resonite Mod Template</Title>
     <Authors>Banane9</Authors>
     <Version>0.3.0</Version>
     <Description>This is a template for a MonkeyLoader mod.</Description>
     <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
-    <PackageTags>mod; mods; monkeyloader</PackageTags>
-    <PackageProjectUrl>https://github.com/MonkeyModdingTroop/MonkeyLoader.ModTemplate</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/ResoniteModdingGroup/ModTemplate</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ResoniteModdingGroup/ModTemplate.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>mod; mods; monkeyloader; resonite</PackageTags>
+    <IncludeSymbols>False</IncludeSymbols>
+    <EmbedAllSources>True</EmbedAllSources>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);AddExtraFilesToPackage</TargetsForTfmSpecificContentInPackage>
   </PropertyGroup>
 
@@ -57,7 +62,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <!-- Reference the pre-patcher assembly from the Game Pack -->
+    <!-- Reference the pre-patcher assembly from the Game Pack because PackageReference is stupid -->
     <Reference Include="MonkeyLoader.Resonite.Data">
       <HintPath>$(PkgMonkeyLoader_GamePacks_Resonite)\lib\net462\pre-patchers\MonkeyLoader.Resonite.Data.dll</HintPath>
     </Reference>
