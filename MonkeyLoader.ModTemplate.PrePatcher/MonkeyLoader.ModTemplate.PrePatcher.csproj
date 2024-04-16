@@ -7,9 +7,9 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <PackageReference Include="MonkeyLoader" Version="0.11.0-beta" />
+    <PackageReference Include="MonkeyLoader" Version="0.14.2-beta" />
     <!-- Prevent automatically referencing all DLLs from the Game Pack -->
-    <PackageReference Include="MonkeyLoader.GamePacks.Resonite" Version="0.10.2-beta" ExcludeAssets="compile; build; runtime; native" GeneratePathProperty="true" />
+    <PackageReference Include="MonkeyLoader.GamePacks.Resonite" Version="0.12.1-beta" ExcludeAssets="compile; build; runtime; native" GeneratePathProperty="true" />
     <PackageReference Include="PolySharp" Version="1.14.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
