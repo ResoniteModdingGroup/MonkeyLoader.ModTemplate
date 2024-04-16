@@ -11,8 +11,8 @@ using System.Threading.Tasks;
 
 namespace MonkeyLoader.ModTemplate
 {
-    [HarmonyPatch(typeof(ProtoFluxTool), nameof(ProtoFluxTool.OnAttach))]
     [HarmonyPatchCategory(nameof(BasicPatcher))]
+    [HarmonyPatch(typeof(ProtoFluxTool), nameof(ProtoFluxTool.OnAttach))]
     internal class BasicPatcher : ResoniteMonkey<BasicPatcher>
     {
         // The options for these should be provided by your game's game pack.
