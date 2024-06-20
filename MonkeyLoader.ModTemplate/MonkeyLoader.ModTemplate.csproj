@@ -1,8 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net462</TargetFramework>
     <AssemblyTitle>MonkeyLoader.ModTemplate</AssemblyTitle>
-    <AssemblyFileName>$(AssemblyTitle).dll</AssemblyFileName>
     <RootNamespace>MonkeyLoader.ModTemplate</RootNamespace>
   </PropertyGroup>
 
@@ -11,23 +9,16 @@
     <PackageId>MonkeyLoader.ModTemplate</PackageId>
     <Title>MonkeyLoader Mod Template</Title>
     <Authors>Banane9</Authors>
-    <Version>0.1.0-beta</Version>
+    <Version>0.2.0-beta</Version>
     <Description>This is a template for a MonkeyLoader mod.</Description>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/MonkeyModdingTroop/ModTemplate</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/MonkeyModdingTroop/ModTemplate.git</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
     <PackageTags>mod; mods; monkeyloader</PackageTags>
-    <IncludeSymbols>False</IncludeSymbols>
-    <EmbedAllSources>True</EmbedAllSources>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PackageProjectUrl>https://github.com/MonkeyModdingTroop/ModTemplate</PackageProjectUrl>
     <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);AddExtraFilesToPackage</TargetsForTfmSpecificContentInPackage>
   </PropertyGroup>
 
   <Target Name="AddExtraFilesToPackage">
     <ItemGroup>
-      <TfmSpecificPackageFile Include="$(OutDir)$(AssemblyName).pdb" PackagePath="lib/$(TargetFramework)/" />
       <TfmSpecificPackageFile Include="$(ProjectDir)..\MonkeyLoader.ModTemplate.PrePatcher\bin\$(Configuration)\$(TargetFramework)\MonkeyLoader.ModTemplate.PrePatcher.*" PackagePath="lib/$(TargetFramework)/pre-patchers/" />
     </ItemGroup>
   </Target>
@@ -37,8 +28,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="MonkeyLoader" Version="0.11.0-beta" />
-    <PackageReference Include="MonkeyLoader.GamePacks.Unity" Version="0.5.1-beta" />
+    <PackageReference Include="MonkeyLoader" Version="0.17.4-beta" />
+    <PackageReference Include="MonkeyLoader.GamePacks.Unity" Version="0.6.0-beta" />
     <PackageReference Include="PolySharp" Version="1.14.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

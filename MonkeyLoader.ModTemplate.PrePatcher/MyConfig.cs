@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MonkeyLoader.ModTemplate
 {
-    internal class MyConfig : ConfigSection
+    internal sealed class MyConfig : ConfigSection
     {
         private readonly DefiningConfigKey<string> _targetNameKey = new("TargetName", "Your name.", () => "World");
 

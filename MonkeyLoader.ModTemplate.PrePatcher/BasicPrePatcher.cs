@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MonkeyLoader.ModTemplate
 {
-    internal class BasicPrePatcher : ConfiguredEarlyMonkey<BasicPrePatcher, MyConfig>
+    internal sealed class BasicPrePatcher : ConfiguredEarlyMonkey<BasicPrePatcher, MyConfig>
     {
         public static void HelloMethod()
             => Logger.Info(() => $"Hello {ConfigSection.TargetName} from pre-patched-in SomeNameSpace.SomeType static constructor!");

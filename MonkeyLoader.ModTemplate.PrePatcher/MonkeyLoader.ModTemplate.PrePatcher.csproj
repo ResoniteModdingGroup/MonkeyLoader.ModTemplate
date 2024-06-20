@@ -1,13 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net462</TargetFramework>
     <AssemblyTitle>MonkeyLoader.ModTemplate.PrePatcher</AssemblyTitle>
-    <AssemblyFileName>$(AssemblyTitle).dll</AssemblyFileName>
     <RootNamespace>MonkeyLoader.ModTemplate</RootNamespace>
   </PropertyGroup>
   
   <ItemGroup>
-    <PackageReference Include="MonkeyLoader" Version="0.11.0-beta" />
+    <PackageReference Include="MonkeyLoader" Version="0.17.4-beta" />
     <PackageReference Include="PolySharp" Version="1.14.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
