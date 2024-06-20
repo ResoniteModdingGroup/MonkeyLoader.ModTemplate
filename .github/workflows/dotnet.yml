@@ -73,7 +73,7 @@ jobs:
     steps:
     # Install the .NET SDK indicated in the global.json file
     - name: Setup Dotnet
-        uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v4
 
     # Cache NuGet packages
     - uses: actions/cache@v3
