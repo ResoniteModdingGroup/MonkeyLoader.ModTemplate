@@ -13,7 +13,7 @@
     <Description>This is a template for a MonkeyLoader mod.</Description>
     <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
     <PackageTags>mod; mods; monkeyloader</PackageTags>
-    <PackageProjectUrl>https://github.com/MonkeyModdingTroop/ModTemplate</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/MonkeyModdingTroop/MonkeyLoader.ModTemplate</PackageProjectUrl>
     <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);AddExtraFilesToPackage</TargetsForTfmSpecificContentInPackage>
   </PropertyGroup>
 
