@@ -34,7 +34,7 @@ jobs:
     steps:
     # Setup environment
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       
     - name: Setup Dotnet
       uses: actions/setup-dotnet@v4
@@ -42,7 +42,7 @@ jobs:
         source-url: https://nuget.pkg.github.com/MonkeyModdingTroop/index.json
       
     # Cache NuGet packages
-    - uses: actions/cache@v3
+    - uses: actions/cache@v4
       with:
         path: ~/.nuget/packages
         key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
@@ -60,7 +60,7 @@ jobs:
       run: dotnet test --no-restore --no-build
       
     # Publish the NuGet package(s) as an artifact, so they can be used in the following jobs
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         name: nuget
         if-no-files-found: error
@@ -76,7 +76,7 @@ jobs:
       uses: actions/setup-dotnet@v4
 
     # Cache NuGet packages
-    - uses: actions/cache@v3
+    - uses: actions/cache@v4
       with:
         path: ~/.nuget/packages
         key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
@@ -87,7 +87,7 @@ jobs:
       run: dotnet tool update Meziantou.Framework.NuGetPackageValidation.Tool --global
           
     # Download the NuGet package created in the previous job
-    - uses: actions/download-artifact@v3
+    - uses: actions/download-artifact@v4
       with:
         name: nuget
         path: ${{ env.NuGetDirectory }}
@@ -97,4 +97,4 @@ jobs:
     # If some rules are not applicable, you can disable them
     # using the --excluded-rules or --excluded-rule-ids option
     - name: Validate Package(s)
-      run: meziantou.validate-nuget-package (Get-ChildItem "${{ env.NuGetDirectory }}/*.nupkg")
+      run: meziantou.validate-nuget-package (Get-ChildItem -Recurse "${{ env.NuGetDirectory }}/*.nupkg")

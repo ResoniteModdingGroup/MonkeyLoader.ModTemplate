@@ -17,6 +17,13 @@
     <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);AddExtraFilesToPackage</TargetsForTfmSpecificContentInPackage>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <EnablePackageValidation>true</EnablePackageValidation>
+
+    <!-- Optional: Detect breaking changes from a previous stable version
+    <PackageValidationBaselineVersion>0.1.0-beta</PackageValidationBaselineVersion> -->
+  </PropertyGroup>
+
   <Target Name="AddExtraFilesToPackage">
     <ItemGroup>
       <TfmSpecificPackageFile Include="$(ProjectDir)..\MonkeyLoader.ModTemplate.PrePatcher\bin\$(Configuration)\$(TargetFramework)\MonkeyLoader.ModTemplate.PrePatcher.*" PackagePath="lib/$(TargetFramework)/pre-patchers/" />
