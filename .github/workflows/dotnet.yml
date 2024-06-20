@@ -67,7 +67,7 @@ jobs:
         retention-days: 7
         path: ./**/*.nupkg
         
-  "Validate NuGet":
+  Validate-NuGet:
     runs-on: ubuntu-latest
     needs: [ Build ]
     steps:
