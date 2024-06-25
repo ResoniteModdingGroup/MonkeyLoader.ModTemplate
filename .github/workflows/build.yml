@@ -4,9 +4,13 @@ name: dotnet-CI
 
 # Trigger the action on push to master
 on:
+  workflow_call: []  # Allow reusing this workflow
   push:
     branches:
-      - master
+      - master       # Run for pushes to master
+  pull_request:
+    branches:
+      - '*'          # Run the workflow for all pull requests
   
 # Sets permissions of the GITHUB_TOKEN to allow reading packages
 permissions:
@@ -40,9 +44,9 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         source-url: https://nuget.pkg.github.com/MonkeyModdingTroop/index.json
-      
-    # Cache NuGet packages
-    - uses: actions/cache@v4
+    
+    - name: Cache NuGet Packages
+      uses: actions/cache@v4
       with:
         path: ~/.nuget/packages
         key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
@@ -58,25 +62,30 @@ jobs:
     
     - name: Test
       run: dotnet test --no-restore --no-build
+    
+    - name: Move NuGet Packages
+      run: mv (Get-ChildItem -Recurse ./ -Include *.nupkg) ./
       
     # Publish the NuGet package(s) as an artifact, so they can be used in the following jobs
-    - uses: actions/upload-artifact@v4
+    - name: Upload NuGet Packages Artifact
+      uses: actions/upload-artifact@v4
       with:
-        name: nuget
+        name: NuGet Packages
         if-no-files-found: error
         retention-days: 7
-        path: ./**/*.nupkg
+        path: ./*.nupkg
         
   Validate-NuGet:
     runs-on: ubuntu-latest
     needs: [ Build ]
     steps:
-    # Install the .NET SDK indicated in the global.json file
     - name: Setup Dotnet
       uses: actions/setup-dotnet@v4
+      with:
+        source-url: https://nuget.pkg.github.com/MonkeyModdingTroop/index.json
 
-    # Cache NuGet packages
-    - uses: actions/cache@v4
+    - name: Cache NuGet Packages
+      uses: actions/cache@v4
       with:
         path: ~/.nuget/packages
         key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
@@ -86,8 +95,8 @@ jobs:
     - name: Install NuGet Validator
       run: dotnet tool update Meziantou.Framework.NuGetPackageValidation.Tool --global
           
-    # Download the NuGet package created in the previous job
-    - uses: actions/download-artifact@v4
+    - name: Download NuGet Packages Artifact
+      uses: actions/download-artifact@v4
       with:
         name: nuget
         path: ${{ env.NuGetDirectory }}
@@ -97,4 +106,4 @@ jobs:
     # If some rules are not applicable, you can disable them
     # using the --excluded-rules or --excluded-rule-ids option
     - name: Validate Package(s)
-      run: meziantou.validate-nuget-package (Get-ChildItem -Recurse "${{ env.NuGetDirectory }}/*.nupkg") --excluded-rules IconMustBeSet 
+      run: meziantou.validate-nuget-package (Get-ChildItem -Recurse "${{ env.NuGetDirectory }}" -Include *.nupkg) --excluded-rules IconMustBeSet 
