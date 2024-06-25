@@ -1,11 +1,9 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 
-name: publish
+name: Publish
 
 on:
   push:
-    branches:
-      - master       # Run the workflow when pushing to the master branch
     tags:
       - v**          # Only when a v... tag is pushed
 

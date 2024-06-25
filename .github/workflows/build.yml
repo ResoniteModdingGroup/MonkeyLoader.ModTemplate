@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 
-name: dotnet-CI
+name: Build
 
 # Trigger the action on push to master
 on:
@@ -10,7 +10,7 @@ on:
       - master       # Run for pushes to master
   pull_request:
     branches:
-      - '*'          # Run the workflow for all pull requests
+      - *            # Run the workflow for all pull requests
   
 # Sets permissions of the GITHUB_TOKEN to allow reading packages
 permissions:
