@@ -61,7 +61,7 @@ jobs:
       - name: Download NuGet Packages Artifact
         uses: actions/download-artifact@v4
         with:
-          name: nuget
+          name: NuGet Packages
           path: ${{ env.NuGetDirectory }}
 
       - name: Setup Dotnet
