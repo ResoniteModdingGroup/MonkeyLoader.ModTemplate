@@ -9,7 +9,7 @@
     <PackageId>MonkeyLoader.ModTemplate.Resonite</PackageId>
     <Title>MonkeyLoader Resonite Mod Template</Title>
     <Authors>Banane9</Authors>
-    <Version>0.3.0</Version>
+    <Version>0.4.0</Version>
     <Description>This is a template for a Resonite MonkeyLoader mod.</Description>
     <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/ResoniteModdingGroup/ModTemplate</PackageProjectUrl>
