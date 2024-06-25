@@ -10,7 +10,7 @@ on:
       - master       # Run for pushes to master
   pull_request:
     branches:
-      - *            # Run the workflow for all pull requests
+      - '*'          # Run the workflow for all pull requests
   
 # Sets permissions of the GITHUB_TOKEN to allow reading packages
 permissions:
