@@ -9,7 +9,7 @@
     <PackageId>MonkeyLoader.ModTemplate</PackageId>
     <Title>MonkeyLoader Mod Template</Title>
     <Authors>Banane9</Authors>
-    <Version>0.2.0-beta</Version>
+    <Version>0.3.0</Version>
     <Description>This is a template for a MonkeyLoader mod.</Description>
     <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
     <PackageTags>mod; mods; monkeyloader</PackageTags>

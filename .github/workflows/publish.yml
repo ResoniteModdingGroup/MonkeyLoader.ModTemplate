@@ -10,6 +10,7 @@ on:
 # Sets permissions of the GITHUB_TOKEN to allow writing packages and push releases
 permissions:
   packages: write
+  contents: write
 
 env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
