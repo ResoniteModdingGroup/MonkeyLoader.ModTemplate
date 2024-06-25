@@ -79,5 +79,5 @@ jobs:
       - name: Publish NuGet Packages
         run: |
           foreach($file in (Get-ChildItem "${{ env.NuGetDirectory }}" -Recurse -Include *.nupkg)) {
-              dotnet nuget push $file --api-key "${{ secrets.GITHUB_TOKEN }}" --source https://nuget.pkg.github.com/MonkeyModdingTroop/index.json --skip-duplicate
+              dotnet nuget push $file --api-key "${{ secrets.GITHUB_TOKEN }}" --source https://nuget.pkg.github.com/ResoniteModdingGroup/index.json --skip-duplicate
           }
