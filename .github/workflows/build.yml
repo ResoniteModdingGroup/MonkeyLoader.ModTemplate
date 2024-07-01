@@ -107,7 +107,6 @@ jobs:
     - name: Restore NuGet Package Cache
       uses: actions/cache/restore@v4
       with:
-        save-always: true
         path: ~/.nuget/packages
         key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
         restore-keys: |
