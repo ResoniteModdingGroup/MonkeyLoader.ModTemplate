@@ -43,10 +43,11 @@ jobs:
     - name: Setup Dotnet
       uses: actions/setup-dotnet@v4
       with:
+        dotnet-version: 8.x
         source-url: https://nuget.pkg.github.com/MonkeyModdingTroop/index.json
     
-    - name: Cache NuGet Packages
-      uses: actions/cache@v4
+    - name: Restore NuGet Package Cache
+      uses: actions/cache/restore@v4
       with:
         path: ~/.nuget/packages
         key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
@@ -78,6 +79,14 @@ jobs:
         if-no-files-found: error
         retention-days: 7
         path: ./*.nupkg
+    
+    # Only when it's not from a PR to avoid any funny packages in the cache
+    - name: Save NuGet Package Cache
+      if: ${{ github.event_name != 'pull_request' }}
+      uses: actions/cache/save@v4
+      with:
+        path: ~/.nuget/packages
+        key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
         
   Validate-NuGet:
     runs-on: ubuntu-latest
@@ -86,11 +95,13 @@ jobs:
     - name: Setup Dotnet
       uses: actions/setup-dotnet@v4
       with:
+        dotnet-version: 8.x
         source-url: https://nuget.pkg.github.com/MonkeyModdingTroop/index.json
 
-    - name: Cache NuGet Packages
-      uses: actions/cache@v4
+    - name: Restore NuGet Package Cache
+      uses: actions/cache/restore@v4
       with:
+        save-always: true
         path: ~/.nuget/packages
         key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
         restore-keys: |
