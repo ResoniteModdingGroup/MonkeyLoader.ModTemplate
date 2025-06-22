@@ -1,0 +1,8 @@
+{
+  "localeCode": "ja",
+  "authors": [ "kazu" ],
+  "messages": {
+    "ModTemplate.KeyA": "翻訳キーA",
+    "ModTemplate.KeyB": "また別の翻訳"
+  }
+}
