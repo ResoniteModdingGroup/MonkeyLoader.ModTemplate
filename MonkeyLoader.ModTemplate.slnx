@@ -8,5 +8,6 @@
     <File Path=".github/workflows/build.yml" />
     <File Path=".github/workflows/publish.yml" />
   </Folder>
+  <Project Path="MonkeyLoader.ModTemplate.PrePatcher/MonkeyLoader.ModTemplate.PrePatcher.csproj" />
   <Project Path="MonkeyLoader.ModTemplate/MonkeyLoader.ModTemplate.csproj" />
 </Solution>
