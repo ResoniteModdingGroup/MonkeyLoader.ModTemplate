@@ -1,5 +1,0 @@
-﻿<Project Sdk="Remora.Resonite.Sdk">
-  <PropertyGroup>
-    <RootNamespace>MonkeyLoader.ModTemplate</RootNamespace>
-  </PropertyGroup>
-</Project>
