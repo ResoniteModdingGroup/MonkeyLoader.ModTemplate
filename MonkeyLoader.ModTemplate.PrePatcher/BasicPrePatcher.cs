@@ -3,11 +3,6 @@ using MonkeyLoader.Resonite.Features.FrooxEngine;
 using Mono.Cecil.Cil;
 using Mono.Cecil.Rocks;
 using MonoMod.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MonkeyLoader.ModTemplate
 {
@@ -33,7 +28,7 @@ namespace MonkeyLoader.ModTemplate
             var engineCCtor = engine.GetStaticConstructor();
 
             var processor = engineCCtor.Body.GetILProcessor(); // using MonoMod.Utils; is important for this to work v
-            processor.InsertBefore(engineCCtor.Body.Instructions.First(), processor.Create(OpCodes.Call, typeof(BasicPrePatcher).GetMethod(nameof(HelloMethod))));
+            processor.InsertBefore(engineCCtor.Body.Instructions.First(), processor.Create(OpCodes.Call, typeof(BasicPrePatcher).GetMethod(nameof(HelloMethod))!));
 
             patchJob.Changes = true;
             return true;
